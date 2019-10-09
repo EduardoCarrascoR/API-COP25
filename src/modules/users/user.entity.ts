@@ -1,6 +1,7 @@
 import * as crypto from 'crypto';
-import { Table, Column, Model, DataType, CreatedAt, UpdatedAt, DeletedAt, BeforeValidate, BeforeCreate } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, CreatedAt, UpdatedAt, DeletedAt, BeforeValidate, BeforeCreate, Default } from 'sequelize-typescript';
 import { MessageCodeError } from '../../shared/errors/message-code-error';
+
 
 @Table({tableName: 'usuario', timestamps: true})
 export class User extends Model<User> {
@@ -103,14 +104,16 @@ export class User extends Model<User> {
     @Column({
         type: DataType.INTEGER,
         allowNull: false,
-        field: 'Estado'
+        field: 'Estado',
+         
     })
     public state: number;
 
     @BeforeValidate
     public static validateData(user: User, options: any) {
         if (!options.transaction) throw new Error('Missing transaction.');
-        if (!user.name) throw new MessageCodeError('user:create:missingFirstName');
+        if (!user.rut) throw new MessageCodeError('user:create:missingRut');
+        if (!user.name) throw new MessageCodeError('user:create:missingName');
         if (!user.firstSurname) throw new MessageCodeError('user:create:missingFirstSurname');      // hacer mensaje de error y eliminar el last name
         if (!user.secondSurname) throw new MessageCodeError('user:create:missingSecondSurname');    // hacer mensaje de error y eliminar el last name
         if (!user.email) throw new MessageCodeError('user:create:missingEmail');

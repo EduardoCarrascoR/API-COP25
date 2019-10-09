@@ -6,84 +6,96 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to create a new user with missing information.',
-        userMessage: 'Impossible de créer un utilisateur avec des données manquantes.'
+        userMessage: 'Can not create a user with missing data.'
     },
-    'user:create:missingFirstName': {
+    'user:create:missingRut': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
-        errorMessage: 'Unable to create a new user without first name.',
-        userMessage: 'Veuillez indiquer votre prénom.'
+        errorMessage: 'Unable to create a new user without rut.',
+        userMessage: 'Please enter your rut.'
     },
-    'user:create:missingLastName': {
+    'user:create:missingName': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
-        errorMessage: 'Unable to create a new user without last name.',
-        userMessage: 'Veuillez indiquer votre nom.'
+        errorMessage: 'Unable to create a new user without name.',
+        userMessage: 'Please enter your name.'
+    },
+    'user:create:missingFirstSurname': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to create a new user without first Surname.',
+        userMessage: 'Please enter your first Surname.'
+    },
+    'user:create:missingSecondSurname': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to create a new user without second Surname.',
+        userMessage: 'Please enter your second Surname.'
     },
     'user:create:missingEmail': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to create a new user without email.',
-        userMessage: 'Veuillez indiquer votre adresse e-mail.'
+        userMessage: 'Please enter your email address.'
     },
     'user:create:missingPassword': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to create a new user without password.',
-        userMessage: 'Veuillez indiquer votre mot de passe.'
+        userMessage: 'Please enter your password.'
     },
     'user:create:emailAlreadyExist': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to create a new user with this email.',
-        userMessage: "L'adresse e-mail que vous avez fourni est déjà utilisé."
+        userMessage: "The email address you provided is already in use."
     },
     'user:show:missingId': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to find the user caused by missing information.',
-        userMessage: "Impossible de trouver un utilisateur sans fournir d'id."
+        userMessage: "Can not find a user without providing an id."
     },
     'user:update:missingInformation': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to update the user caused by missing information.',
-        userMessage: "Impossible de mettre à jour l'utilisateur avec des données manquantes."
+        userMessage: "Unable to update the user with missing data."
     },
     'user:update:missingId': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to update the user caused by missing information.',
-        userMessage: "Impossible de mettre à jour l'utilisateur avec des données manquantes."
+        userMessage: "Unable to update the user with missing data."
     },
     'user:delete:missingId': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to delete the user caused by missing information.',
-        userMessage: "Impossible de supprimer un utilisateur sans fournir d'id."
+        userMessage: "Can not delete a user without providing an id."
     },
     'user:notFound': {
         type: 'notFound',
         httpStatus: HttpStatus.NOT_FOUND,
         errorMessage: 'Unable to found the user with the provided information.',
-        userMessage: 'Aucun utilisateur trouvé avec les informations fourni.'
+        userMessage: 'No users found with the information provided.'
     },
     'request:unauthorized': {
         type: 'unauthorized',
         httpStatus: HttpStatus.UNAUTHORIZED,
         errorMessage: 'Access unauthorized.',
-        userMessage: 'Accès non autorisé.'
+        userMessage: 'Unauthorized access.'
     },
     'auth:login:missingEmail': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to connect the user without email.',
-        userMessage: 'Veuillez indiquer votre adresse e-mail.'
+        userMessage: 'Please enter your email address.'
     },
     'auth:login:missingPassword': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to connect the user without password.',
-        userMessage: 'Veuillez indiquer votre mot de passe.'
+        userMessage: 'Please enter your password.'
     }
 };
