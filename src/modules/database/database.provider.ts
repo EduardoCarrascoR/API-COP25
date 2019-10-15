@@ -14,9 +14,13 @@ export const databaseProvider = {
             database: 'cop'
         })
         sequelize.addModels([User])
-        await sequelize.sync().then(() => {
+        await sequelize.sync()
+        .then(() => {
             console.log('database conected')
         })   
+        .catch(err => {
+            console.log('No se pudo conectar con la base de datos.')
+        })
         
         return sequelize
     }
