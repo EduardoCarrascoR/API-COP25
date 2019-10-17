@@ -24,10 +24,11 @@ export class UserService {
     }
 
     public async create(user: CreateProductDto): Promise<User> {
+        console.log(user)
         return await this.sequelizeInstance.transaction(async transaction => {
             return await this.userRepository.create<User>(user, {
-                //returning: true,
-                transaction
+                transaction: transaction
+                
             })
         })
     }

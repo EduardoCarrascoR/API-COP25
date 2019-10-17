@@ -5,4 +5,5 @@ export class CreateProductDto{
     readonly secondSurname: string
     readonly password: string
     readonly email: string
+
 }

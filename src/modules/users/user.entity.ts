@@ -1,6 +1,7 @@
 import * as crypto from 'crypto';
 import { Table, Column, Model, DataType, CreatedAt, UpdatedAt, DeletedAt, BeforeValidate, BeforeCreate, Default } from 'sequelize-typescript';
 import { MessageCodeError } from '../../shared/errors/message-code-error';
+import { Sequelize } from "sequelize";
 
 
 @Table({tableName: 'usuario', timestamps: true})
@@ -40,17 +41,19 @@ export class User extends Model<User> {
     @Column({
         type: DataType.STRING(45),
         allowNull: true,
+        defaultValue: Sequelize.literal('NULL'),
         field: 'ApellidoSec'
     })
     public secondSurname: string;
-
+    
     @Column({
-        type: DataType.STRING(45),
+        type: DataType.STRING(45),   
         allowNull: true,
+        defaultValue: Sequelize.literal('NULL'),
         field: 'Password'
     })
     public password: string;
-
+    
     @Column({
         type: DataType.STRING(45),
         allowNull: false,
@@ -69,19 +72,20 @@ export class User extends Model<User> {
         
     })
     public email: string;
-        
+     
     @Column({
         type: DataType.STRING(100),
         allowNull: true,
+        defaultValue: Sequelize.literal('NULL'),
         field: 'Token'
     })
-    token: string
+    public token: string
     
     @CreatedAt 
     @Column({
         type: DataType.DATE,
         allowNull: false,
-        defaultValue: DataType.NOW,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
         field: 'FechaCreacion'
     })
     public createdAt: Date;
@@ -90,6 +94,7 @@ export class User extends Model<User> {
     @Column({
         type: DataType.DATE,
         allowNull: true,
+        defaultValue: Sequelize.literal('NULL'),
         field: 'FechaModificacion'
     })
     public updatedAt: Date;
@@ -97,6 +102,7 @@ export class User extends Model<User> {
     @Column({
         type: DataType.DATE,
         allowNull: true,
+        defaultValue: Sequelize.literal('NULL'),
         field: 'FechaUltConex'
     })
     public deletedAt: Date;
@@ -105,7 +111,7 @@ export class User extends Model<User> {
         type: DataType.INTEGER,
         allowNull: false,
         field: 'Estado',
-         
+        defaultValue: Sequelize.literal('0')
     })
     public state: number;
 
