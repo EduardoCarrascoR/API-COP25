@@ -48,11 +48,18 @@ export class User extends Model<User> {
     
     @Column({
         type: DataType.STRING(45),   
-        allowNull: true,
-        defaultValue: Sequelize.literal('NULL'),
+        allowNull: false,
         field: 'Password'
     })
     public password: string;
+    
+    @Column({
+        type: DataType.BLOB,   
+        allowNull: true,
+        defaultValue: Sequelize.literal('NULL'),
+        field: 'PasswordEncriptada'
+    })
+    public encript: string;
     
     @Column({
         type: DataType.STRING(45),
@@ -105,7 +112,7 @@ export class User extends Model<User> {
         defaultValue: Sequelize.literal('NULL'),
         field: 'FechaUltConex'
     })
-    public deletedAt: Date;
+    public lastConnectionAt: Date;
 
     @Column({
         type: DataType.INTEGER,

@@ -14,6 +14,12 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
         errorMessage: 'Unable to create a new user without rut.',
         userMessage: 'Please enter your rut.'
     },
+    'user:create:missingRutValidation': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'You cannot create a new user without a valid rut',
+        userMessage: 'Please enter your rut correctly.'
+    },
     'user:create:missingName': {
         type: 'BadRequest',
         httpStatus: HttpStatus.BAD_REQUEST,
