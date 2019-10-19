@@ -47,7 +47,7 @@ export class User extends Model<User> {
     public secondSurname: string;
     
     @Column({
-        type: DataType.STRING(45),   
+        type: DataType.STRING,   
         allowNull: false,
         field: 'Password'
     })

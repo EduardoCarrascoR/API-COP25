@@ -34,6 +34,8 @@ export class UserService {
                     transaction: transaction
                     
                 })
+            }).catch(err => {
+                console.log(err)
             })
         } else {
             throw new MessageCodeError('user:create:missingRutValidation');
