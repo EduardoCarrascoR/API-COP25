@@ -16,7 +16,7 @@ export class UserService {
         return await this.userRepository.findAll<User>()
     }
 
-    public async findById(id: number): Promise<User | null> {
+    public async findById(id: number): Promise<User> {
         return await this.userRepository.findByPk<User>(id)
     }
 
@@ -53,7 +53,6 @@ export class UserService {
 
             user = this._assign(user, newValue);
             return await user.save({
-                //returning: true,
                 transaction
             });
         });

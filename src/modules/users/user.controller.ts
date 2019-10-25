@@ -24,16 +24,17 @@ export class UserController {
         return res.status(HttpStatus.CREATED).send().json(HttpStatus.CREATED)
     }
 
-    @Get(':id')
-    public async getUser(@Param('id') id: number, @Res() res) {
-        if(!id) throw new MessageCodeError('user:show:missingId')
-
+    @Get('/:id')
+    public async getUser(@Param('id') id, @Res() res) {
         const user = await this.userService.findById(id)
+        if(!user) throw new MessageCodeError('user:show:missingId')
+
+        
         return res.status(HttpStatus.OK).json(user)
     }
 
-    @Put(':id')
-    public async update(@Body() body, @Param('id') id: number, @Res() res) {
+    @Put('/:id')
+    public async update(@Body() body, @Param('id') id, @Res() res) {
         if(!id) throw new MessageCodeError('user:update:missingId')
 
         await this.userService.update(id, body)
