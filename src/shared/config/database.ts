@@ -1,4 +1,8 @@
 import { IDatabaseConfig } from "./interfaces/data-base.interface";
+import * as dotenv from 'dotenv';
+dotenv.config();
+
+
 
 export const databaseConfig: IDatabaseConfig = {
     development: {
@@ -8,9 +12,6 @@ export const databaseConfig: IDatabaseConfig = {
         host: process.env.DB_HOST || '127.0.0.1',
         port: Number(process.env.DB_PORT) || 3308,
         dialect: 'mysql',
-        logging: true,
-        force: true,
-        timezone: '+02:00'
     },
     production: {
         username: process.env.DB_USER || '',
@@ -19,9 +20,6 @@ export const databaseConfig: IDatabaseConfig = {
         host: process.env.DB_HOST || '127.0.0.1',
         port: Number(process.env.DB_PORT) || 3308,
         dialect: 'mysql',
-        logging: true,
-        force: true,
-        timezone: '+02:00'
     },
     test: {
         username: process.env.DB_USER || '',
@@ -30,8 +28,6 @@ export const databaseConfig: IDatabaseConfig = {
         host: process.env.DB_HOST || '127.0.0.1',
         port: Number(process.env.DB_PORT) || 3308,
         dialect: 'mysql',
-        logging: true,
-        force: true,
-        timezone: '+02:00'
     }
+    
 }

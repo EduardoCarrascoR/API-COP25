@@ -1,4 +1,4 @@
-  
+
 export interface IDatabaseConfigAttributes {
     username: string;
     password: string;
@@ -6,9 +6,8 @@ export interface IDatabaseConfigAttributes {
     host: string;
     port: number;
     dialect: string; 
-    logging: boolean | Function;
-    force: boolean;
-    timezone: string;
+    logging?: boolean;
+    operatorsAliases?: boolean;
 }
 
 export interface IDatabaseConfig {
