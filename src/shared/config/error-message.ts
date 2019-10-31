@@ -139,5 +139,29 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to connect the new without subTitle.',
         userMessage: 'Please enter your subTitle.'
+    },
+    'image:create:missingInformation': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to create a image with missing information.',
+        userMessage: 'Can not create a image with missing data.'
+    },
+    'image:create:missingName': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to create a new user without name.',
+        userMessage: 'Please enter your name.'
+    },
+    'image:create:missingPath': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to create a new user without path.',
+        userMessage: 'Please enter your path.'
+    },
+    'image:show:missingId': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to find the image caused by missing information.',
+        userMessage: "Can not find a image without providing an id."
     }
 };

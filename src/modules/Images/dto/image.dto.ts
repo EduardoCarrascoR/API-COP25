@@ -1,4 +1,4 @@
 export class CreateImageDto{
-    readonly Path: number
-    readonly Nombre: string
+    readonly Url: number
+    readonly name: string
 }

@@ -2,7 +2,7 @@ import { Table, Column, Model, DataType, CreatedAt, UpdatedAt, DeletedAt, Before
 import { MessageCodeError } from '../../shared/errors/message-code-error';
 import { Sequelize } from "sequelize";
 
-@Table({tableName: 'imagen', timestamps: true})
+@Table({tableName: 'imagen', timestamps: true, updatedAt: false})
 export class Image extends Model<Image> {
     @Column({
         type: DataType.INTEGER,
@@ -36,4 +36,9 @@ export class Image extends Model<Image> {
         field: 'FecCreacion'
     })
     public createdAt: number
+
+    @BeforeValidate
+    public static validateData(image: Image, options: any) {
+        if (!options.transaction) throw new Error('Missing transaction.');
+    }
 }
