@@ -19,7 +19,7 @@ export class UserModule {
                 {path: '/users', method: RequestMethod.GET},
                 {path: '/users/:id', method: RequestMethod.GET},
                 {path: '/users/:id', method: RequestMethod.PUT},
-                {path: '/users/:id', method: RequestMethod.DELETE}
+                {path: '/users/state/:id', method: RequestMethod.PUT}
             )
 
     }

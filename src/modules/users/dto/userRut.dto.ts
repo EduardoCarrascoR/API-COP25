@@ -1,4 +1,4 @@
-export class CreateUser2Dto{
+export class CreateUserWithRutDto{
     readonly rut: number
     readonly rutDv: string
     readonly name: string
@@ -6,5 +6,5 @@ export class CreateUser2Dto{
     readonly secondSurname: string
     readonly password: string
     readonly email: string
-
+    readonly role: string
 }

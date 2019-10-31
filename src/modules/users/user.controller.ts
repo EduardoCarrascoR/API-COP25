@@ -29,7 +29,6 @@ export class UserController {
         const user = await this.userService.findById(id)
         if(!user) throw new MessageCodeError('user:show:missingId')
 
-        
         return res.status(HttpStatus.OK).json(user)
     }
 
@@ -41,11 +40,12 @@ export class UserController {
         return res.status(HttpStatus.OK).send()
     }
 
-    @Delete(':id')
-    public async delete(@Param('id') id: number, @Res() res) {
-        if(!id) throw new MessageCodeError('user:delete:missingId')
+    @Put('/state/:id')
+    public async delete(@Body() body,@Param('id') id: number, @Res() res) {
+        if(!id) throw new MessageCodeError('user:updateState:missingId')
+        if(!body) throw new MessageCodeError('user:updateState:missingState')
 
-        await this. userService.delete(id)
+        await this.userService.blockUser(id,body)
         return res.status(HttpStatus.OK).send()
     }
 

@@ -27,7 +27,7 @@ export class AuthService implements IAuthService {
                 email: credentials.email,
                 password: crypto.createHmac('sha256', credentials.password).digest('hex')
                 
-            }
+            }   
             
         });
         if (!user) throw new MessageCodeError('user:notFound');

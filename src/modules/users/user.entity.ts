@@ -1,9 +1,20 @@
 import * as crypto from 'crypto';
-import { Table, Column, Model, DataType, CreatedAt, UpdatedAt, DeletedAt, BeforeValidate, BeforeCreate, Default } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, CreatedAt, UpdatedAt, BeforeValidate, BeforeCreate, Scopes, BelongsToMany, BeforeUpdate } from 'sequelize-typescript';
 import { MessageCodeError } from '../../shared/errors/message-code-error';
 import { Sequelize } from "sequelize";
+import { UserRole } from "../role/userRole.entity";
+import { Role } from "../role/role.entity";
 
-
+/* @Scopes(() => ({
+    Roles: {
+        include: [
+            {
+                Model: Role,
+                through: {attributes: []}
+            }
+        ]
+    }
+})) */
 @Table({tableName: 'usuario', timestamps: true})
 export class User extends Model<User> {
     @Column({
@@ -122,19 +133,23 @@ export class User extends Model<User> {
     })
     public state: number;
 
+    /* @BelongsToMany(() => Role, () => UserRole)
+    Roles?: Role[] */
+
     @BeforeValidate
     public static validateData(user: User, options: any) {
         if (!options.transaction) throw new Error('Missing transaction.');
-        if (!user.rut) throw new MessageCodeError('user:create:missingRut');
-        if (!user.name) throw new MessageCodeError('user:create:missingName');
-        if (!user.firstSurname) throw new MessageCodeError('user:create:missingFirstSurname');      // hacer mensaje de error y eliminar el last name
-        if (!user.secondSurname) throw new MessageCodeError('user:create:missingSecondSurname');    // hacer mensaje de error y eliminar el last name
-        if (!user.email) throw new MessageCodeError('user:create:missingEmail');
-        if (!user.password) throw new MessageCodeError('user:create:missingPassword');
     }
 
     @BeforeCreate
     public static async hashPassword(user: User, options: any) {
+        if (!options.transaction) throw new Error('Missing transaction.');
+
+        user.password = crypto.createHmac('sha256', user.password).digest('hex');
+    }
+
+    @BeforeUpdate
+    public static async hashPasswordUpdate(user: User, options: any) {
         if (!options.transaction) throw new Error('Missing transaction.');
 
         user.password = crypto.createHmac('sha256', user.password).digest('hex');

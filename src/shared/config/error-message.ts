@@ -80,6 +80,18 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
         errorMessage: 'Unable to delete the user caused by missing information.',
         userMessage: "Can not delete a user without providing an id."
     },
+    'user:updateState:missingId': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to update state the user caused by missing id.',
+        userMessage: "Can not update state a user without providing an id."
+    },
+    'user:updateState:missingState': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to update state the user caused by missing state.',
+        userMessage: "Can not update state a user without providing an state."
+    },
     'user:notFound': {
         type: 'notFound',
         httpStatus: HttpStatus.NOT_FOUND,
@@ -103,5 +115,29 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to connect the user without password.',
         userMessage: 'Please enter your password.'
+    },
+    'news:create:missingInformation': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to create a news with missing information.',
+        userMessage: 'Can not create a news with missing data.'
+    },
+    'news:create:missingTitle': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to connect the new without title.',
+        userMessage: 'Please enter your title.'
+    },
+    'news:create:missingDescription': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to connect the new without description.',
+        userMessage: 'Please enter your description.'
+    },
+    'news:create:missingSubTitle': {
+        type: 'BadRequest',
+        httpStatus: HttpStatus.BAD_REQUEST,
+        errorMessage: 'Unable to connect the new without subTitle.',
+        userMessage: 'Please enter your subTitle.'
     }
 };

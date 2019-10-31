@@ -1,6 +1,10 @@
 import { Sequelize } from "sequelize-typescript";
 import { databaseConfig } from "../../shared/index";
 import { User } from "../users/user.entity";
+import { Role } from "../role/role.entity";
+import { UserRole } from "../role/userRole.entity";
+import { Image } from "../Images/image.entity";
+import { News } from "../news/news.entity";
 
 export const databaseProvider = {
     provide:  'SequelizeInstance',
@@ -13,7 +17,7 @@ export const databaseProvider = {
             password: '',
             database: 'cop'
         })
-        sequelize.addModels([User])
+        sequelize.addModels([User,Role,UserRole, Image, News])
         await sequelize.sync()
         .then(() => {
             console.log('database conected')
