@@ -163,5 +163,11 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
         httpStatus: HttpStatus.BAD_REQUEST,
         errorMessage: 'Unable to find the image caused by missing information.',
         userMessage: "Can not find a image without providing an id."
+    },
+    'roles:notFound': {
+        type: 'notFound',
+        httpStatus: HttpStatus.NOT_FOUND,
+        errorMessage: 'Unable to found the Roles with the provided information.',
+        userMessage: 'No Roles found with the information provided.'
     }
 };

@@ -9,6 +9,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);  
   app.useGlobalFilters(new DispatchError());
   await app.listen(process.env.PORT);
-  console.log(`app listen on PORT:${process.env.PORT}`)
+  await console.log(`app listen on PORT: ${process.env.PORT}`)
 }
 bootstrap();

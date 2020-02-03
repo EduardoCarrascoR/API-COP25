@@ -8,6 +8,7 @@ import { Role } from '../role/role.entity';
 import { UserRole } from "../role/userRole.entity";
 import { UpdateStateUserDto } from './dto/user-state.dto';
 import { UpdateUserDto } from './dto/user-update.dto';
+import { Scopes } from 'sequelize-typescript';
 
 
 @Injectable()
@@ -22,7 +23,10 @@ export class UserService {
     }
 
     public async findById(id: number): Promise<User> {
-        return await this.userRepository.findByPk<User>(id)
+        return await this.userRepository.findByPk<User>(id,{
+            include: [{model: Role}]
+          })
+
     }
 
     public async findOne(options: Object): Promise<User | null> {
@@ -42,12 +46,12 @@ export class UserService {
                     
                     }).then(user => {u=user.id})
                     
-                    /* await Role.findOne({where:{nameRole: user.role}, attributes: ['id']}).then(userD =>{ roleId = userD.id}) 
+                    await Role.findOne({where:{nameRole: 'User'}, attributes: ['id']}).then(userD =>{ roleId = userD.id}) 
                     const RoleData = await this.saveRole(u, roleId)
                     console.log(RoleData)
                     await UserRole.create(RoleData, {
                         transaction: transaction,
-                    }) */
+                    })
                     
                 }
             ).catch(err => {

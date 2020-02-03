@@ -5,7 +5,7 @@ import { Sequelize } from "sequelize";
 import { UserRole } from "../role/userRole.entity";
 import { Role } from "../role/role.entity";
 
-/* @Scopes(() => ({
+@Scopes(() => ({
     Roles: {
         include: [
             {
@@ -14,7 +14,7 @@ import { Role } from "../role/role.entity";
             }
         ]
     }
-})) */
+}))
 @Table({tableName: 'usuario', timestamps: true})
 export class User extends Model<User> {
     @Column({
@@ -133,8 +133,8 @@ export class User extends Model<User> {
     })
     public state: number;
 
-    /* @BelongsToMany(() => Role, () => UserRole)
-    Roles?: Role[] */
+    @BelongsToMany(() => Role, () => UserRole)
+    Roles?: Role[]
 
     @BeforeValidate
     public static validateData(user: User, options: any) {

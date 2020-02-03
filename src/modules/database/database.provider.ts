@@ -7,7 +7,7 @@ import { Image } from "../Images/image.entity";
 import { News } from "../news/news.entity";
 import * as dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config()
 
 export const databaseProvider = {
     provide:  'SequelizeInstance',
@@ -33,6 +33,7 @@ export const databaseProvider = {
         })   
         .catch(err => {
             console.log('No se pudo conectar con la base de datos.')
+            console.log(err)
         })
         
         return sequelize

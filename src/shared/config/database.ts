@@ -1,12 +1,12 @@
 import { IDatabaseConfig } from "./interfaces/data-base.interface";
 import * as dotenv from 'dotenv';
-dotenv.config();
+dotenv.config()
 
 
 
 export const databaseConfig: IDatabaseConfig = {
     development: {
-        username: process.env.DB_USER || '',
+        username:  process.env.DB_USER || '',
         password: process.env.DB_PASSWORD || '',
         database: process.env.DB_NAME || '',
         host: process.env.DB_HOST || '127.0.0.1',
